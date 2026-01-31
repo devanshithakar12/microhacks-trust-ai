@@ -191,13 +191,6 @@ jobs:
           # If the script hits input() it will otherwise hang CI.
           printf "y\n" | python scripts/04_run_evaltarget.py
 
-      - name: Upload evaluation results
-        if: ${{ success() }}
-        uses: actions/upload-artifact@v5
-        with:
-          name: eval_results_target
-          path: evals/results/quality/results_target.jsonl
-
       - name: Summarize evaluation results (markdown)
         shell: bash
         run: |
