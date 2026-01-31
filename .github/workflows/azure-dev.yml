@@ -99,6 +99,7 @@ jobs:
       - name: Print backend URL
         run: |
           python -c "import os; print(os.getenv('AZURE_CONTAINER_APP_URL'))"
+          
 
       - name: Probe chat endpoint
         shell: bash
@@ -130,6 +131,26 @@ jobs:
       #  run: |
       #    python scripts/04_run_evaltarget.py --targeturl=http://127.0.0.1:50505/chat --resultsdir=evals/results/pr${{ github.event.issue.number }}
 
+      - name: Preflight - validate required endpoints include https://
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, sys
+          keys = ["AZURE_OPENAI_ENDPOINT","AZURE_AI_ENDPOINT","AZURE_AI_PROJECT_ENDPOINT"]
+          for k in keys:
+            v = os.getenv(k, "")
+            print(f"{k}={v!r}")
+          # pick evaluator endpoint the script will use
+          endpoint = os.getenv("AZURE_OPENAI_ENDPOINT") or os.getenv("AZURE_AI_ENDPOINT") or ""
+          if endpoint and not (endpoint.startswith("https://") or endpoint.startswith("http://")):
+            print("\nERROR: Evaluator endpoint is missing protocol. It must start with https://", file=sys.stderr)
+            sys.exit(2)
+          proj = os.getenv("AZURE_AI_PROJECT_ENDPOINT","")
+          if proj and not (proj.startswith("https://") or proj.startswith("http://")):
+            print("\nERROR: AZURE_AI_PROJECT_ENDPOINT is missing protocol. It must start with https://", file=sys.stderr)
+            sys.exit(3)
+          PY
+      
       - name: Run evaluation against deployed app
         run: |
           # If the script hits input() it will otherwise hang CI.
