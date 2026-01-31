@@ -18,7 +18,6 @@ We will set up the initial environment for you to build on top of during your Mi
 1. Install [Powershell 7 (supported on Windows, macOS, and Linux)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
 1. Install [Python 3.13](https://www.python.org/downloads/).
 1. Install the Git CLI. You can download it from the [Git website](https://git-scm.com/downloads).
-1. Install Node.
 1. Install VS Code on your local PC if not using Codespaces.
 <br>
 
