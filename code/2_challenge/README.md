@@ -32,7 +32,7 @@ Microsoft has developed Azure Review Checklists available to allow customers an 
 
 2. Review the AI Landing Zone checklist items and their status to see which ones are Open, Fulfilled, Not Verified or Not required.  Go to the tab called, "Dashboard" and review the overall status by Design areas.  Review the list for familarity and discuss with team potential gaps.  This spreadsheet was built using a [private network](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/deploy_private.md) but was not 100% compliant with Azure AI Landing Zones.
 
-      ![Alt text](/media/alz_checklist.png "ALZ Review Checklist")
+      ![Alt text](/media/AILZ%20Dashboard.png "ALZ Review Checklist")
 </br>
 
 WAF & Security Compliance are now complete and the infrastructure is ready for production.  We will need to run application testing to evaluate if the application is safe and high quality.
