@@ -45,11 +45,11 @@ WAF & Security Compliance are now complete and the infrastructure is ready for p
 
 In Challenge 1, we tested our application with a small subset of questions and had a human judge gauge their accuracy. (Manual Evaluations) We want to scale these tests from a handful of questions to 100s of questions to measure the quality and safety of the application.  Automated evaluation scripts leveraging the Azure AI Evaluation SDK will enable us to use a predefined list of questions, answers, context and ground truth to submit into these models.  The results returned by these models will be evaluated by an “AI-Judge” (LLM model) to rate their quality, safety and reason for their scores.  These results will be saved into Microsoft Foundry.
 
-1. Review the [list of questions](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/evals/ground_truth.jsonl) to assess whether these questions are representative of the questions users will ask the HR Q&A application.  There are open-source frameworks that can generate a list of question and answer pairs.  In this repo, there is a [Generate Ground Truth data script](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/evaluation.md#generate-ground-truth-data) that generates questions/answer pairs that humans should review to ensure their quality.  Due to time/costs, we will only leverage the pre-defined list and will not generate any new questions.
+1. Review the [list of questions](/evals/ground_truth.jsonl) to assess whether these questions are representative of the questions users will ask the HR Q&A application.  There are open-source frameworks that can generate a list of question and answer pairs.  In this repo, there is a [Generate Ground Truth data script](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/evaluation.md#generate-ground-truth-data) that generates questions/answer pairs that humans should review to ensure their quality.  Due to time/costs, we will only leverage the pre-defined list and will not generate any new questions.
 
 1. Based on CH1 Impact Assessment, you should have a list of evaluation metrics to measure quality and safety.  This application generates text responses in a Q&A format.  Due to this, we plan to leverage the ["General Purpose" Evaluators](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-evaluators/general-purpose-evaluators?view=foundry-classic) for quality.  Based on your use case, you will need to determine which evaluation metrics are best suited for your application.  Due to time/cost, we leverage relevance & groundedness for simplicity.  Each one of the evaluation scripts (quality & safety) defines the metrics and maps the results from the [target application to the ground truth data file](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk?view=foundry-classic&viewFallbackFrom=foundry#local-evaluation-on-a-target).
 
-     ![Alt text](/media/quality_metrics.png "ALZ Review Checklist")
+     ![Alt text](/media/quality_metrics.png "Quality Metrics")
 
 1. Go to the command line terminal in codespaces and submit this script to run quality metrics.  
 
@@ -57,7 +57,7 @@ In Challenge 1, we tested our application with a small subset of questions and h
     python ./scripts/04_run_evaltarget.py
     ```
 
-   If you are using the default settings it will take approximately 1 minute for this to complete. The Target application is running in a container and might need you to rerun this script multiple times when it times-out.  Go into the Microsoft Foundry and review the Automated Evaluations.  Review each Q&A pair for these scores and reason.  
+   This evaluation will take approximately 20 seconds to complete. The Target application is running in a container and might need you to rerun this script multiple times when it times-out.  Go into the Microsoft Foundry and review the Automated Evaluations.  Review each Q&A pair for these scores and reason.  The script submits just 5 question & answer pairs to shorten execution time.
 
 1. For each metric, review the number of success and failures in the Foundry portal to see overall success rate.  
 
@@ -65,15 +65,15 @@ In Challenge 1, we tested our application with a small subset of questions and h
 
 1. For more information on quality evaluation scripts, read the [Quality Evaluation](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/evaluation.md) file for RAGCHAT application.
 
-1. The second set of evaluations will be for the safety metrics.  Safety evaluations will ensure the answers are appropriate and do not contain harmful or sensitive content. Run this command in the terminal.
+1. The second set of evaluations will be for the safety metrics.  This scripts will generate by default 5 simulations which are adversial questions to submit to the target application.  Safety evaluations will ensure the answers are appropriate and do not contain harmful or sensitive content. Run this command in the terminal.
 
    ```bash
    python ./scripts/05_safety_evals.py
    ```
    The parameters are:
-   * `--max_simulations`: The maximum number of simulated user queries. Default is `200`. The higher the number, the longer the evaluation will take. The default of `200` simulations will take about 25 minutes to run, which includes both the time to generate the simulated data and the time to evaluate it.  
+   * `--max_simulations`: The maximum number of simulated user queries. Default is `5`. The higher the number, the longer the evaluation will take. The default of `5` simulations will take about 1 minutes to run, which includes both the time to generate the simulated adversial questions and the time to evaluate it.  
 
-   We recommend keeping the max simulations at '5' for the number of times the script will ask follow-up questions from the main question in your question & answer pair.  For time/cost reasons, we are only using five simulations, but it is recommended for production workloads to test a larger number of simulations. For further instructions on [safety evaluations](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/safety_evaluation.md), review this file for guidance.
+   We recommend keeping the max simulations at '5'.  For time/cost reasons, we are only using five simulations, but it is recommended for production workloads to test a larger number of simulations. For further instructions on [safety evaluations](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/safety_evaluation.md), review this file for guidance.
  
 1. Evaluate the Safety metrics and share with the team to determine if they are acceptable.  
 
@@ -105,9 +105,13 @@ The AI Red Team Agent will be able to assess risk categories and attack strategi
 
 1.	WAF Compliance exceeds 70 to 80% (varies by intensity).  Review the spreadsheet and open the dashboard tab.  Find the Review status and see if the number of open items is less than 30%.  If this is not the case, you’ll need to review the checklist until you mitigate enough open issues that allows you to reach this threshold.
 
-1. Automated Quality evaluations are no more than 90% for each metric and the safety scores are at 100% for all metrics.  Review the list of quality metrics; groundedness and relevance for quality while safety metrics are hate, sexual, violence and self-harm.  Review the summary score of these four metrics and ensure it is at 100%.
+1. Automated Quality evaluations are more than 90% for each metric and the safety scores are at 100% for all metrics.  Review the list of quality metrics; groundedness and relevance for quality while safety metrics are hate, sexual, violence and self-harm.  Review the summary score of these four metrics and ensure it is at 100%.
 
 1. Red Team Security testing should have a result category of "Conditional".  This means most criteria are met with minor issues.  There are eight attack categories tested with advanced evasion techniques.  Review the results as a learning opportunity but do not attempt to mitigate the issues to improve the scores due to time constraints of the Microhack.
+
+</br>
+
+## Continue to Challenge 3
 
 After you complete all the success criteria, follow the steps in the [Challenge 3 -- Observability & Operations](/code/3_challenge/README.md) to run the workshop.
 

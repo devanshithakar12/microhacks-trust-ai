@@ -3,7 +3,6 @@
 ## Overview
 
 Contoso Electronics is piloting an internal HR Q&A application where employees can ask about benefits and policies. The chat agent retrieves answers from policy documents with citations. Chat applications are typically graded on functionality and not impact on end-users. We want to help developers and sponsors gain trust in their applications in the early stages of the development cycle while gaining confidence in its feasibility. In this challenge, we will work in the Planning phase to prototype our application through model selection, context engineering, and manual evaluation. The purpose of the planning phase is to green light our concept into a working application and understand its strengths and limitations to better design it for the Build Phase.
-
 <br>
 
 ## Tools & Config Needed
@@ -17,7 +16,6 @@ Contoso Electronics is piloting an internal HR Q&A application where employees c
 1. Ground truth Q&A list (JSONL file or Synthetic Data Generation)
 
 ---
-
 <br>
 
 ## Key Tasks for Challenge
@@ -29,7 +27,6 @@ Contoso Electronics is piloting an internal HR Q&A application where employees c
 - Build guardrails in Playground to enforce safety, groundedness and prompt protections
 
 ---
-
 <br>
 
 ## Lab Activities
@@ -199,13 +196,13 @@ Configure guardrail policies and run automated evaluations in Microsoft Foundry 
 
 To successfully complete this lab, you must meet all of the following criteria:
 
-1. Create and activate a Foundry agent with at least one deployed model 
+1. Create and activate a Foundry agent in the playground connected to Azure AI Search.
 
-1. Integrate Azure AI Search into the Agent
+1. Type in a few questions for manual evaluation and judge as a human accuracy.
 
-1. Identify the metrics for each risk in the Impact Assessment
+1. Identify the metrics for each risk in the Impact Assessment.
 
-1. Apply a Guardrail Policy enforcing safety, groundedness, and prompt protections 
+1. Apply a Guardrail Policy enforcing safety, groundedness, and prompt protections.
 
 ## Continue to Challenge 2
 
