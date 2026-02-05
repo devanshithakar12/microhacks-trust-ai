@@ -27,7 +27,7 @@ To provide attendees with guidance and understanding on the Microhack goals, con
 
 ## Microhack Challenges
 
-To get started with this workshop, open the current [Microhack Challenges](docs/Microhack%20Challenges%20-%20Trustworthy%20AI_UPDATE.pdf).  For a more self-service guidebook, open the individual challenges below for coaches notes.
+To get started with this workshop, open four challenge links below.  Start with Challenge 0 for environment setup instructions.
 
 There are four challenges for this workshop.  They are;
 

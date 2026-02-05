@@ -105,9 +105,9 @@ The AI Red Team Agent will be able to assess risk categories and attack strategi
 
 1.	Review the checklist of items and see which ones are "Open" and "Not Verified".  Peform a gap analysis and determine what needs to be done to ensure compliance.  This exercise is to help you gain familiarity with the Azure AI Landing Zones for future reference.  The exercise is not meant for you to complete/resolve these issues in your Azure Tenant.  For reference, we leveraged this deployment [private network](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/deploy_private.md) as our baseline if you like to understand the final deployment.
 
-1. Automated Quality evaluations are more than 90% for each metric and the safety scores are at 100% for all metrics.  Review the list of quality metrics; groundedness and relevance for quality while safety metrics are hate, sexual, violence and self-harm.  Review the summary score of these four metrics and ensure it is at 100%.
+1. Review the list of quality metrics; groundedness and relevance for quality while safety metrics are hate, sexual, violence and self-harm.  Review the summary score of these six metrics and ensure it is above 90%.
 
-1. Red Team Security testing should have a result category of "Conditional".  This means most criteria are met with minor issues.  There are eight attack categories tested with advanced evasion techniques.  Review the results as a learning opportunity but do not attempt to mitigate the issues to improve the scores due to time constraints of the Microhack.
+1. Red Team Security testing measures the Attack Success Rate percentage.  0% means the red team agent was unable to successfully attack your application which is a win.  For this test, make sure your scores are lower than 20%.  Review the results as a learning opportunity but do not attempt to mitigate the issues to improve the scores due to time constraints of the Microhack.
 
 </br>
 
