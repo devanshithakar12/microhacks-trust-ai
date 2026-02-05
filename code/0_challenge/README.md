@@ -38,8 +38,9 @@ We will set up the initial environment for you to build on top of during your Mi
 ## Recommended Regions
 * Sweden Central (swedencentral)
 * France Central (francecentral)
-* East US (eastus) (Safety Evaluators not available thru SDK.)
-* West US 3 (westus3) (Safety Evaluators not availble thru SDK.)
+* US North Central (northcentralus)
+* East US 2 (eastus2)
+* Switzerland West (switzerlandwest)
 
 - **Optimal Region** for availability should be Sweden Central (Optimal due to Azure OpenAI availability)
 - **Alternative Region** for availability should be France Central for Azure OpenAI availability.
@@ -168,12 +169,14 @@ After you complete all the success criteria, follow the steps in the [Challenge 
 
 ## Resources
 * Video series called, RAG Deep Dive https://aka.ms/ragdeepdive 
-* Deployment Guidance https://aka.ms/ragchat#guidance   
-* RAG Resources from Repo https://aka.ms/ragchat#resources
+* Alernative RAGCHAT repo https://aka.ms/ragchat#guidance   
+* RAG Resources from RAGCHAT Repo https://aka.ms/ragchat#resources
+
 <br>
 <br>
 
 # CHALLENGE 0 COMPLETE!!!!!
+
 <br>
 <br>
 

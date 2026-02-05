@@ -113,7 +113,7 @@ Conducting this Responsible AI Impact Assessment not only mitigates risks but al
 
 ### Lab 2 – Instructions
 
-* There are four risks in the impact assessment.  Review each risk and compare them against the quality & safety metrics setup in Foundry as evaluators.  This workflow will help you in the BUILD phase to setup evaluations and monitors to ensure the application is in compliance with your standards.
+* There are four risks in the impact assessment.  Review each risk and compare them against the [quality & safety metrics](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/observability?view=foundry-classic#what-are-evaluators) setup in Foundry as evaluators.  This workflow will help you in the BUILD phase to setup evaluations and monitors to ensure the application is in compliance with your standards.
 
 ---
 
@@ -198,9 +198,9 @@ To successfully complete this lab, you must meet all of the following criteria:
 
 1. Create and activate a Foundry agent in the playground connected to Azure AI Search.
 
-1. Type in a few questions for manual evaluation and judge as a human accuracy.
+1. Type in a few questions for manual evaluation and judge them.
 
-1. Identify the metrics for each risk in the Impact Assessment.
+1. Identify the metrics for each risk in the Impact Assessment. [Answer Key](/docs/RAIkey.md)
 
 1. Apply a Guardrail Policy enforcing safety, groundedness, and prompt protections.
 
@@ -210,12 +210,7 @@ Congratulations for completing Challenge 1 on Responsible AI.  Next challenge is
 
 ## Best Practices
 
-- Keep scope narrowly defined and tied to a business decision or outcome.   
-- Use retrieval (Azure AI Search) for enterprise knowledge instead of prompting static content 
-- Always write explicit system instructions to guide tool usage and reduce hallucinations 
-- Apply guardrail policies (safety, groundedness, prompt shields) before broader rollout 
-- Test with ground‑truth datasets, including edge and failure cases 
-- Treat governance, testing, and observability as first‑class features, not post‑deployment steps 
+As we wrap up the prototyping phase for Microsoft Foundry projects, the guiding principle is to build purposeful, decision-aligned prototypes that reveal real business value and risk before any broader rollout. That means keeping the scope narrowly defined and explicitly tied to a concrete business outcome, using enterprise retrieval such as Azure AI Search to ground responses in authoritative knowledge rather than relying on static prompt content, and writing clear system instructions that guide model behavior and reduce hallucinations. Guardrail policies — including safety, groundedness, and prompt shields — should be configured early to ensure the model meets enterprise safety and compliance expectations, and prototypes should be evaluated against both typical cases and edge or failure cases with ground-truth datasets. Treat governance, systematic testing, and observability not as post-deployment tasks but as first-class features from day one, leveraging Foundry’s built-in observability and evaluation tools to continuously monitor quality, performance, and risks. By embedding these practices into prototyping, teams not only improve output reliability and trust, but also build a solid foundation for scaling toward production-grade AI solutions
 
 
 ## Learning Resources
