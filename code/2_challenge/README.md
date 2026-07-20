@@ -109,7 +109,7 @@ The AI Red Team Agent will be able to assess risk categories and attack strategi
 
 1. After the scan, review the results carefully. The baseline "Basic" scan will typically have an ASR (Attack Success Rate) of 0%, meaning the Red Team agent was unable to elicit harmful responses. If you enable the advanced scan (commented out in the script), you may see a higher ASR as more sophisticated attack strategies are applied. This demonstrates the importance of Red Teaming to ensure you run a thorough evaluation of your Generative AI application, giving you greater confidence that it is ready for a production environment.
 
-    ![Alt text](/media/ai-red-team-data.png "AI Red Team Results")
+    ![Alt text](/media/ai-red-team-data_v2.png "AI Red Team Results")
 
 </br>
 
