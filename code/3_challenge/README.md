@@ -85,7 +85,7 @@ Go to Azure Portal —> Resource group —> Select Foundry Resource —> Assign 
 
 Now, GitHub actions evaluation workflow is ready for the trigger.
 
-🧩 Step 5 — Trigger your first run
+🧩 Step 5 — Trigger your first run (test)
 
 Do minor change in main branch and push it, it should trigger the workflow pipeline.
 
