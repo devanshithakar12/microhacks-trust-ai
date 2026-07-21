@@ -33,26 +33,26 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.1.0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6.3.0
         with:
           python-version: "3.11"
 
       - name: Install azd
-        uses: Azure/setup-azd@v2.2.0
+        uses: Azure/setup-azd@v2.3.0
 
       # This makes DefaultAzureCredential work reliably in GitHub Actions
       - name: Login to Azure (OIDC)
-        uses: azure/login@v2
+        uses: azure/login@v3.0.0
         with:
           client-id: ${{ env.AZURE_CLIENT_ID }}
           tenant-id: ${{ env.AZURE_TENANT_ID }}
           subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
 
       - name: Set az account
-        uses: azure/CLI@v2
+        uses: azure/CLI@v3.0.0
         with:
           inlineScript: |
             az account set --subscription ${{env.AZURE_SUBSCRIPTION_ID}}
@@ -242,7 +242,7 @@ jobs:
 
       - name: Upload evaluation artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6.0.0
         with:
           name: eval_results_target
           path: |
