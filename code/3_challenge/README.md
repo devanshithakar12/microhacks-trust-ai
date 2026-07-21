@@ -22,7 +22,7 @@ This completes the DevOps loop and achieves the **Operate stage of Responsible A
 - Microsoft Foundry Tracing and Monitoring
 - Automated evaluations using GitHub Actions CI/CD pipeline
 - Microsoft Foundry Content Safety configurations
-- Ensure the New Foundry Control Switch in the header of the Foundry Portal is switched to "OFF".  All CH2 and CH3 Labs will be using Foundry V1 portal "Classic".  Foundry V2 portal is in Preview
+- Ensure the New Foundry Control Switch in the header of the Foundry Portal is switched to "ON".
 
 ---
 
@@ -99,7 +99,7 @@ Once the workflow gets completed, it will publish results in your Foundry.
 
 ![CH3-FoundryEval1](../../media/CH3-FoundryEval1.jpg)
 
-Click on Swith to Dashboard view button for us to compare our baseline evaluation in CH2 against the new one in CH3. 
+<!-- Click on Swith to Dashboard view button for us to compare our baseline evaluation in CH2 against the new one in CH3. 
 
 ![CH3-FoundryEval2](../../media/CH3_SwitchDashboard.png)
 
@@ -109,7 +109,7 @@ Click on the view icon for the two evaluations to make them visible for comparis
 
 Review the results for each evaluation run.  Compare your baseline run in CH2 against the deployment to production to see the direction of the evaluation results.  You will be able to see both runs side by side and delta change in metrics and responses from the LLMs.  This will be your last step post-deployment to give a green light to your application.
 
-![CH3-FoundryEval2](../../media/CH3_Eval_Compare.png)
+![CH3-FoundryEval2](../../media/CH3_Eval_Compare.png) -->
 
 🚀 Production Recommendations
 
@@ -131,7 +131,7 @@ Connect the running application to Application Insights and enable full observab
 
 ---
 
-## Viewing Tracing in Microsoft Foundry Portal
+## Viewing Tracing in Microsoft Foundry Portal (Classic)
 
 ### Objective
 
@@ -156,7 +156,7 @@ Monitor and troubleshoot chatbot and model metrics for operational health.
 
 Steps:
 
-1. Go to Foundry Portal
+1. Go to Foundry Portal (Classic)
 
 1. Ensure you are in the Foundry Project
 
@@ -164,7 +164,7 @@ Steps:
     - **Observe and Optimize** in the left-hand menu
     - Click on the **Monitoring** item
     - Click on the **Resource Usage** tab
-    - Select model deployment and pick **gpt-4o**
+    - Select model deployment and pick **gpt-5.4-mini**
 
 ![view monitoring1](../../media/monitoringmodelmetrics1.png)
 
