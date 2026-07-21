@@ -190,6 +190,7 @@ jobs:
         run: |
           python scripts/07_run_evaltarget_new_portal.py --max-items 11
       - name: Summarize evaluation results (markdown)
+        if: ${{ always() }}
         shell: bash
         run: |
           set -e
@@ -199,19 +200,18 @@ jobs:
 
           responses_path = pathlib.Path("evals/results/quality/results_target_new_portal.jsonl")
           run_info_path = pathlib.Path("evals/results/quality/new_portal_eval_run.json")
-          if not responses_path.exists():
-            raise SystemExit(f"Missing results file: {responses_path}")
-          if not run_info_path.exists():
-            raise SystemExit(f"Missing run metadata file: {run_info_path}")
-
           rows = []
-          for line in responses_path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line:
-              rows.append(json.loads(line))
+          if responses_path.exists():
+            for line in responses_path.read_text(encoding="utf-8").splitlines():
+              line = line.strip()
+              if line:
+                rows.append(json.loads(line))
 
-          run_info = json.loads(run_info_path.read_text(encoding="utf-8"))
-          status = run_info.get("status", "unknown")
+          run_info = {}
+          if run_info_path.exists():
+            run_info = json.loads(run_info_path.read_text(encoding="utf-8"))
+
+          status = run_info.get("status", "missing")
           eval_id = run_info.get("eval_id", "")
           run_id = run_info.get("run_id", "")
 
@@ -229,6 +229,8 @@ jobs:
           md.append(f"- App call errors: **{error_count}**")
           md.append(f"- Eval ID: `{eval_id}`")
           md.append(f"- Run ID: `{run_id}`")
+          md.append(f"- Results JSONL present: **{responses_path.exists()}**")
+          md.append(f"- Run metadata JSON present: **{run_info_path.exists()}**")
           md.append("")
           md.append("Artifacts:")
           md.append("- `evals/results/quality/results_target_new_portal.jsonl`")
@@ -245,6 +247,7 @@ jobs:
         uses: actions/upload-artifact@v6.0.0
         with:
           name: eval_results_target
+          if-no-files-found: warn
           path: |
             evals/results/quality/results_target_new_portal.jsonl
             evals/results/quality/new_portal_eval_run.json
